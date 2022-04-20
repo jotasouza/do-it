@@ -5,7 +5,7 @@ import { Container, Content } from "./styles";
 import Button from "../../components/Button";
 
 //React
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Home = () => {
   const history = useHistory();
@@ -24,11 +24,14 @@ const Home = () => {
           Organize-se de forma <span>fácil</span> e <span>efetiva</span> .
         </p>
         <div>
-          <Button onClick={() => handleNavigation("/signup")} whiteSchema>
+          <Button onClick={() => handleNavigation("/signup")}>
             Cadastre-se
           </Button>
-          <Button onClick={() => handleNavigation("/login")}>Login</Button>
+          {/* <Button onClick={() => handleNavigation("/login")}>Login</Button> */}
         </div>
+        <span>
+          Já tem uma conta? Faça seu <Link to={"/login"}>login</Link>
+        </span>
       </Content>
     </Container>
   );

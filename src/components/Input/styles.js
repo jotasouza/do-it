@@ -21,4 +21,8 @@ export const InputContainer = styled.div`
     border: 0;
     color: var(--color-icons);
   }
+
+  svg {
+    margin-right: 10px;
+  }
 `;

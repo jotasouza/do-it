@@ -10,7 +10,7 @@ export const Container = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 2rem;
-  margin: 10px;
+  margin: 15px 0px 3px 0px;
   cursor: pointer;
   display: flex;
   align-items: center;
