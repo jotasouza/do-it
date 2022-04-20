@@ -11,7 +11,7 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 
 //Route
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 //Form
 import { useForm } from "react-hook-form";
@@ -21,14 +21,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //Icons
 import { FiUser, FiMail, FiCheck, FiUnlock } from "react-icons/fi";
 
+//API
+import api from "../../services/api";
+
+//Toastify
+import { toast } from "react-toastify";
+
 const Signup = () => {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
-    email: yup
-      .string()
-      .required("Campo obrigatório")
-      .email("Email inválido")
-      .matches(/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/, "Email inválido"),
+    email: yup.string().required("Campo obrigatório").email("Email inválido"),
     password: yup
       .string()
       .min(8, "Mínimo de 8 dígitos")
@@ -54,10 +56,19 @@ const Signup = () => {
     resolver: yupResolver(schema),
   });
 
-  console.log(errors);
+  const history = useHistory();
 
-  const onSubmitFunction = (data) => {
-    console.log(data);
+  const onSubmitFunction = ({ name, email, password }) => {
+    const user = { name, email, password };
+    api
+      .post("/user/register", user)
+      .then((_) => {
+        toast.success("Cadastro realizado com sucesso");
+        return history.push("/login");
+      })
+      .catch((err) => {
+        toast.error("Erro ao criar a conta");
+      });
   };
 
   return (

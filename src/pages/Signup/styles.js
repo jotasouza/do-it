@@ -11,11 +11,24 @@ export const Container = styled.div`
   align-items: stretch;
 `;
 
+const apperImageFromLeft = keyframes`
+from{
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+to{
+    opacity: 1;
+    transform: translateX(0px) ;
+}
+`;
+
 export const BackgroundDiv = styled.div`
   @media (min-width: 1100px) {
     flex: 1;
     background: url(${SignupImage}) no-repeat center, var(--color-icons);
     background-size: contain;
+    animation: ${apperImageFromLeft} 1s;
   }
 `;
 
@@ -54,6 +67,10 @@ export const AnimationContainer = styled.div`
 
     h1 {
       margin-bottom: 1.5rem;
+    }
+
+    > div {
+      margin-top: 15px;
     }
 
     p {

@@ -31,6 +31,11 @@ export const Content = styled.div`
     }
   }
 
+  a {
+    font-weight: bold;
+    color: var(--color-alert);
+  }
+
   div {
     flex: 1;
     display: flex;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.button`
   background: ${(props) => (props.whiteSchema ? "#f5f5f5" : "#d41e45")};
   color: ${(props) => (props.whiteSchema ? "#d41e45" : "#f5f5f5")};
   height: 45px;
