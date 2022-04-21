@@ -18,6 +18,7 @@ export default createGlobalStyle`
     --color-alert: #d41e45;
     --color-orange: #e86e1c;
     --color-border-input: #666360;
+    --color-card: #f0f2eb;
 }
 
 body{

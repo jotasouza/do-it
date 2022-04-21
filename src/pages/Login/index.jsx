@@ -11,7 +11,7 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 
 //Route
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 
 //Form
 import { useForm } from "react-hook-form";
@@ -27,7 +27,7 @@ import api from "../../services/api";
 //Toastify
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Login = ({ userAuthenticated, setUserAuthenticated }) => {
   const schema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("Email inválido"),
     password: yup
@@ -53,18 +53,25 @@ const Login = () => {
 
   const history = useHistory();
 
-  const onSubmitFunction = ({ email, password }) => {
-    const user = { email, password };
+  const onSubmitFunction = (data) => {
     api
-      .post("/user/login", user)
-      .then((_) => {
-        toast.success("Login realizado com sucesso");
+      .post("/user/login", data)
+      .then((response) => {
+        const { token, user } = response.data;
+        localStorage.setItem("@Doit:token", JSON.stringify(token));
+        localStorage.setItem("@Doit:user", JSON.stringify(user));
+
+        setUserAuthenticated(true);
         return history.push("/dashboard");
       })
       .catch((err) => {
-        toast.error("Erro ao fazer o login. Verifique e tente novamente!");
+        toast.error("Email ou senha inválidos. Verifique e tente novamente!");
       });
   };
+
+  if (userAuthenticated) {
+    return <Redirect to={"/dashboard"} />;
+  }
 
   return (
     <Container>

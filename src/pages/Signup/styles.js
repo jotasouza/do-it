@@ -28,7 +28,7 @@ export const BackgroundDiv = styled.div`
     flex: 1;
     background: url(${SignupImage}) no-repeat center, var(--color-icons);
     background-size: contain;
-    animation: ${apperImageFromLeft} 1s;
+    animation: ${apperImageFromLeft} 1.2s;
   }
 `;
 

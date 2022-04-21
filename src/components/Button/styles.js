@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  background: ${(props) => (props.whiteSchema ? "#f5f5f5" : "#d41e45")};
-  color: ${(props) => (props.whiteSchema ? "#d41e45" : "#f5f5f5")};
+  background: ${(props) => (props.blueSchema ? "#0c0636" : "#d41e45")};
+  color: #f5f5f5;
   height: 45px;
   width: 100%;
-  border: 2px solid #d41e45;
+  border: 2px solid;
+  border-color: ${(props) => (props.blueSchema ? "#0c0636" : "#d41e45")};
   border-radius: 8px;
   font-size: 1.2rem;
   font-weight: bold;

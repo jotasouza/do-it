@@ -11,7 +11,7 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 
 //Route
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 
 //Form
 import { useForm } from "react-hook-form";
@@ -27,7 +27,7 @@ import api from "../../services/api";
 //Toastify
 import { toast } from "react-toastify";
 
-const Signup = () => {
+const Signup = ({ userAuthenticated }) => {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório").email("Email inválido"),
@@ -70,6 +70,10 @@ const Signup = () => {
         toast.error("Erro ao criar a conta");
       });
   };
+
+  if (userAuthenticated) {
+    return <Redirect to={"/dashboard"} />;
+  }
 
   return (
     <Container>

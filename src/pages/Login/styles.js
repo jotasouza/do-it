@@ -29,7 +29,7 @@ export const BackgroundDiv = styled.div`
     flex: 1;
     background: url(${LoginImage}) no-repeat center, var(--color-icons);
     background-size: contain;
-    animation: ${apperImageFromRight} 1s;
+    animation: ${apperImageFromRight} 1.2s;
   }
 `;
 
